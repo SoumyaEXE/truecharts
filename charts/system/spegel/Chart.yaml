@@ -9,11 +9,11 @@ annotations:
   truecharts.org/min_helm_version: "3.14"
   truecharts.org/train: system
 apiVersion: v2
-appVersion: 0.3.0
+appVersion: 0.4.0
 dependencies:
   - name: common
-    version: 25.4.10
-    repository: oci://tccr.io/truecharts
+    version: 28.18.0
+    repository: oci://oci.trueforge.org/truecharts
     condition: ""
     alias: ""
     tags: []
@@ -33,6 +33,7 @@ name: spegel
 sources:
   - https://ghcr.io/spegel-org/spegel
   - https://github.com/truecharts/charts/tree/master/charts/system/spegel
+  - https://github.com/trueforge-org/truecharts/tree/master/charts/system/spegel
 type: application
-version: 3.4.0
+version: 4.6.0
 

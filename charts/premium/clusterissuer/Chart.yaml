@@ -12,8 +12,8 @@ apiVersion: v2
 appVersion: latest
 dependencies:
   - name: common
-    version: 25.4.10
-    repository: oci://tccr.io/truecharts
+    version: 28.18.0
+    repository: oci://oci.trueforge.org/truecharts
     condition: ""
     alias: ""
     tags: []
@@ -34,7 +34,8 @@ name: clusterissuer
 sources:
   - https://cert-manager.io/
   - https://github.com/truecharts/charts/tree/master/charts/premium/clusterissuer
+  - https://github.com/trueforge/truecharts/tree/master/charts/premium/clusterissuer
   - https://hub.docker.com/_/hello-world
 type: application
-version: 9.6.6
+version: 10.5.0
 

@@ -1,7 +1,7 @@
 image:
   repository: ghcr.io/wizarrrr/wizarr
   pullPolicy: IfNotPresent
-  tag: 2025.6.1@sha256:4e02cbd3d79d8b0b521e27c4b630e148caac78ea50f6872b54dbcb52727e4be0
+  tag: 2025.9.1@sha256:b3f8102facce812d63506623444bf2c9d53a2b054aa0c0478c84f73333b2e255
 service:
   main:
     ports:

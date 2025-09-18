@@ -1,6 +1,6 @@
 image:
   repository: docker.io/vshadbolt/strapi
-  tag: 5.14.0-alpine@sha256:32c75905603982ef47ea5c094364b4c80a5eefc54f00440414ebf007f92d5084
+  tag: 5.23.4-alpine@sha256:05b428dc8cfddf90ece81fc9cadeebce06e6df4720ff539a8b07d90432834652
   pullPolicy: Always
 service:
   main:

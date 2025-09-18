@@ -1,6 +1,6 @@
 image:
   repository: docker.io/koenkk/zigbee2mqtt
-  tag: 2.4.0@sha256:dd7479e5416c4b95725333d0a69ff504bcbda9a7a3431e5d5dd1e27c16465cdd
+  tag: 2.6.1@sha256:22e1fc160163edee0ceef47910211e97e7b0fb18b6bc94c9b799409252409f6a
   pullPolicy: IfNotPresent
 service:
   main:

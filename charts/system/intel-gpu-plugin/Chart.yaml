@@ -9,11 +9,11 @@ annotations:
   truecharts.org/min_helm_version: "3.14"
   truecharts.org/train: system
 apiVersion: v2
-appVersion: 0.32.1
+appVersion: 0.34.0
 dependencies:
   - name: common
-    version: 25.4.10
-    repository: oci://tccr.io/truecharts
+    version: 28.18.0
+    repository: oci://oci.trueforge.org/truecharts
     condition: ""
     alias: ""
     tags: []
@@ -33,7 +33,8 @@ name: intel-gpu-plugin
 sources:
   - https://github.com/intel
   - https://github.com/truecharts/charts/tree/master/charts/system/intel-gpu-plugin
+  - https://github.com/trueforge-org/truecharts/tree/master/charts/system/intel-gpu-plugin
   - https://hub.docker.com/r/intel/intel-gpu-plugin
 type: application
-version: 0.6.1
+version: 1.6.0
 

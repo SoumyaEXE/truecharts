@@ -12,8 +12,8 @@ apiVersion: v2
 appVersion: 3.68.1
 dependencies:
   - name: common
-    version: 25.4.10
-    repository: oci://tccr.io/truecharts
+    version: 28.18.0
+    repository: oci://oci.trueforge.org/truecharts
     condition: ""
     alias: ""
     tags: []
@@ -39,6 +39,7 @@ sources:
   - https://ghcr.io/linuxserver/filezilla
   - https://github.com/linuxserver/docker-filezilla
   - https://github.com/truecharts/charts/tree/master/charts/stable/filezilla
+  - https://github.com/trueforge-org/truecharts/tree/master/charts/stable/filezilla
 type: application
-version: 13.6.19
+version: 14.5.1
 

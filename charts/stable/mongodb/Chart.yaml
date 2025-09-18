@@ -9,12 +9,12 @@ annotations:
   truecharts.org/min_helm_version: "3.14"
   truecharts.org/train: stable
 apiVersion: v2
-appVersion: 8.0.10
+appVersion: latest
 dependencies:
   - name: common
-    version: 25.4.10
-    repository: oci://tccr.io/truecharts
-    condition: includeCommon
+    version: 28.18.0
+    repository: oci://oci.trueforge.org/truecharts
+    condition: ""
     alias: ""
     tags: []
     import-values: []
@@ -33,10 +33,10 @@ maintainers:
     url: https://truecharts.org
 name: mongodb
 sources:
-  - https://gallery.ecr.aws/bitnami/mongodb
   - https://github.com/bitnami/bitnami-docker-mongodb
   - https://github.com/truecharts/charts/tree/master/charts/stable/mongodb
+  - https://hub.docker.com/r/bitnamisecure/mongodb
   - https://www.mongodb.com
 type: application
-version: 15.3.17
+version: 16.6.0
 

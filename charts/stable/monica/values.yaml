@@ -1,6 +1,6 @@
 image:
   repository: monica
-  tag: 4.1.2@sha256:0fc7027d4d65c523d34502a99172500e1cdb43c7bf4402630d3b733419bea202
+  tag: 4.1.2@sha256:d77cfc124e26db8ae1b0185b4febcc3f11e223251069386b896697e5d92f7479
   pullPolicy: IfNotPresent
 service:
   main:
@@ -14,7 +14,6 @@ persistence:
     mountPath: "/var/www/html/storage"
 mariadb:
   enabled: true
-  includeCommon: true
   mariadbUsername: monica
   mariadbDatabase: monica
 

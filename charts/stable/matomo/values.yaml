@@ -1,6 +1,6 @@
 image:
   repository: public.ecr.aws/bitnami/matomo
-  tag: 5.3.2@sha256:2191294892041b8a376031b0d392dfa688092d04cea45a66aef0966f9993d7c5
+  tag: 5.4.0@sha256:3695dedee523f602d4bc411e01411dee82938e4ca3f56fee79048cc6b2f91c56
   pullPolicy: IfNotPresent
 securityContext:
   container:
@@ -85,6 +85,5 @@ persistence:
     mountPath: "/bitnami/matomo"
 mariadb:
   enabled: true
-  includeCommon: true
   mariadbUsername: matomo
   mariadbDatabase: matomo

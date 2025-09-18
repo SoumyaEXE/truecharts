@@ -9,18 +9,18 @@ annotations:
   truecharts.org/min_helm_version: "3.14"
   truecharts.org/train: stable
 apiVersion: v2
-appVersion: 0.111.2
+appVersion: 0.123.1
 dependencies:
   - name: common
-    version: 25.4.10
-    repository: oci://tccr.io/truecharts
+    version: 28.18.0
+    repository: oci://oci.trueforge.org/truecharts
     condition: ""
     alias: ""
     tags: []
     import-values: []
   - name: redis
-    version: 16.0.5
-    repository: oci://tccr.io/truecharts
+    version: 17.7.0
+    repository: oci://oci.trueforge.org/truecharts
     condition: redis.enabled
     alias: ""
     tags: []
@@ -42,5 +42,5 @@ sources:
   - https://ghcr.io/manyfold3d/manyfold
   - https://github.com/truecharts/charts/tree/master/charts/stable/manyfold
 type: application
-version: 3.2.1
+version: 4.16.1
 

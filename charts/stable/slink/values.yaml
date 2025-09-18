@@ -1,10 +1,13 @@
 image:
   repository: docker.io/anirdev/slink
   pullPolicy: IfNotPresent
-  tag: v1.4.9@sha256:de8c47802c651624ea684c19952e4f1273f200a12287e16768c0af4f1da2171c
+  tag: v1.6.7@sha256:0ef75413431bff32e0106e19a3ee0e8fc7d40a4c82a6866b9534d773483ba72c
 securityContext:
   container:
     readOnlyRootFilesystem: false
+    runAsUser: 0
+    runAsGroup: 0
+    runAsNonRoot: false
 service:
   main:
     ports:
@@ -27,7 +30,6 @@ persistence:
   images:
     enabled: true
     mountPath: "/app/slink/images"
-
 ingress:
   main:
     required: true

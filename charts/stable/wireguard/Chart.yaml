@@ -12,8 +12,8 @@ apiVersion: v2
 appVersion: 1.0.20210914
 dependencies:
   - name: common
-    version: 25.4.10
-    repository: oci://tccr.io/truecharts
+    version: 28.18.0
+    repository: oci://oci.trueforge.org/truecharts
     condition: ""
     alias: ""
     tags: []
@@ -35,6 +35,7 @@ sources:
   - https://ghcr.io/k8s-at-home/wireguard
   - https://github.com/k8s-at-home/container-images/tree/main/apps/wireguard
   - https://github.com/truecharts/charts/tree/master/charts/stable/wireguard
+  - https://github.com/trueforge-org/truecharts/tree/master/charts/stable/wireguard
 type: application
-version: 10.5.1
+version: 11.5.0
 

@@ -9,19 +9,19 @@ annotations:
   truecharts.org/min_helm_version: "3.14"
   truecharts.org/train: stable
 apiVersion: v2
-appVersion: 2.166.0
+appVersion: 2.200.0
 dependencies:
   - name: common
-    version: 25.4.10
-    repository: oci://tccr.io/truecharts
+    version: 28.18.0
+    repository: oci://oci.trueforge.org/truecharts
     condition: ""
     alias: ""
     tags: []
     import-values: []
   - name: redis
-    version: 16.0.5
-    repository: oci://tccr.io/truecharts
-    condition: ""
+    version: 17.7.0
+    repository: oci://oci.trueforge.org/truecharts
+    condition: redis.enabled
     alias: ""
     tags: []
     import-values: []
@@ -42,7 +42,8 @@ sources:
   - https://ghostfol.io/
   - https://github.com/ghostfolio/ghostfolio
   - https://github.com/truecharts/charts/tree/master/charts/stable/ghostfolio
+  - https://github.com/trueforge-org/truecharts/tree/master/charts/stable/ghostfolio
   - https://hub.docker.com/r/ghostfolio/ghostfolio
 type: application
-version: 7.3.0
+version: 8.25.0
 

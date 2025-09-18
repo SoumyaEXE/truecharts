@@ -32,7 +32,7 @@ jobs:
       containers_found: ${{ steps.reduce.outputs.containers_found }} # New output
     steps:
       - name: Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
       - uses: dorny/paths-filter@de90cc6fb38fc0963ad72b210f1f284cd68cea36 # v3
         id: filter
         with:
@@ -66,7 +66,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
       #- name: hadolint
       #  uses: reviewdog/action-hadolint@73fec8b28091e5082c19df69815dd749d97b882a # v1.46.0
       #  with:
@@ -102,7 +102,7 @@ jobs:
       fail-fast: false
     steps:
       - name: Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
 
       # Define if tests and push should be run against which versions/platforms
       - name: Prepare
@@ -195,10 +195,10 @@ jobs:
       - uses: sigstore/cosign-installer@main
 
       - name: Install Syft
-        uses: anchore/sbom-action/download-syft@e11c554f704a0b820cbf8c51673f6945e0731532 # v0.20.0
+        uses: anchore/sbom-action/download-syft@f8bdd1d8ac5e901a77a92f111440fdb1b593736b # v0.20.6
 
       - name: Login to Quay
-        uses: docker/login-action@74a5d142397b4f367a81961eba4e8cd7edddf772 # v3
+        uses: docker/login-action@184bdaa0721073962dff0199f1fb9940f07167d1 # v3
         if: github.event_name != 'pull_request'
         with:
           registry: quay.io
@@ -206,7 +206,7 @@ jobs:
           password: ${{ secrets.QUAY_TCCR_TOKEN }}
 
       - name: Login to GHCR
-        uses: docker/login-action@74a5d142397b4f367a81961eba4e8cd7edddf772 # v3
+        uses: docker/login-action@184bdaa0721073962dff0199f1fb9940f07167d1 # v3
         if: github.event_name != 'pull_request'
         with:
           registry: ghcr.io
@@ -214,17 +214,17 @@ jobs:
           password: ${{ secrets.GHCR_TOKEN }}
       - name: Docker meta
         id: meta
-        uses: docker/metadata-action@902fa8ec7d6ecbf8d84d538b9b233a880e428804 # v5
+        uses: docker/metadata-action@c1e51972afc2121e065aed6d45c65596fe445f3f # v5
         with:
           # list of Docker images to use as base name for tags
           images: |
             quay.io/tccr/${{ matrix.container }}
-            tccr.io/tccr/${{ matrix.container }}
+            oci.trueforge.org/tccr/${{ matrix.container }}
 
       # Install and configure Buildx
       - name: Set up Docker Buildx
         id: buildx
-        uses: docker/setup-buildx-action@b5ca514318bd6ebac0fb2aedd5d36ec1b5c232a2 # v3
+        uses: docker/setup-buildx-action@e468171a9de216ec08956ac3ada2f0791b6bd435 # v3
         with:
           install: true
           version: latest
@@ -250,7 +250,7 @@ jobs:
           file: ./containers/${{ steps.prep.outputs.category }}/${{ matrix.container }}/Dockerfile
           load: true
           tags: |
-            tccr.io/tccr/${{ matrix.container }}:test
+            oci.trueforge.org/tccr/${{ matrix.container }}:test
           cache-from: ${{ steps.prep.outputs.cache_from }}
           cache-to: ${{ steps.prep.outputs.cache_to }}
 
@@ -262,7 +262,7 @@ jobs:
         run: |
           for i in $(seq 1 ${{ env.GOSS_ITERATIONS }}); do
             echo "Running GOSS test iteration $i of ${{ env.GOSS_ITERATIONS }}..."
-            dgoss run tccr.io/tccr/${{ matrix.container }}:test
+            dgoss run oci.trueforge.org/tccr/${{ matrix.container }}:test
           done
 
       # Push if not a PR, otherwise just test the build process for all requested platforms
@@ -299,7 +299,7 @@ jobs:
       - name: Verify the pushed tags
         if: github.event_name != 'pull_request'
         run: |
-          cosign verify quay.io/tccr/${{ matrix.container }}@${{ steps.push.outputs.digest }} --certificate-oidc-issuer=https://token.actions.githubusercontent.com --certificate-identity=https://github.com/truecharts/public/.github/workflows/containers.build.yaml@refs/heads/master
+          cosign verify quay.io/tccr/${{ matrix.container }}@${{ steps.push.outputs.digest }} --certificate-oidc-issuer=https://token.actions.githubusercontent.com --certificate-identity=https://github.com/trueforge-org/truecharts/.github/workflows/containers.build.yaml@refs/heads/master
 
       - name: Generate SBOM
         id: generate_sbom
@@ -316,7 +316,7 @@ jobs:
       - name: Verify SBOM attestation
         if: github.event_name != 'pull_request' && steps.generate_sbom.outcome == 'success'
         run: |
-          cosign verify-attestation quay.io/tccr/${{ matrix.container }}@${{ steps.push.outputs.digest }}  --type https://spdx.dev/Document --certificate-oidc-issuer=https://token.actions.githubusercontent.com --certificate-identity=https://github.com/truecharts/public/.github/workflows/containers.build.yaml@refs/heads/master | jq '.payload |= @base64d | .payload | fromjson'
+          cosign verify-attestation quay.io/tccr/${{ matrix.container }}@${{ steps.push.outputs.digest }}  --type https://spdx.dev/Document --certificate-oidc-issuer=https://token.actions.githubusercontent.com --certificate-identity=https://github.com/trueforge-org/truecharts/.github/workflows/containers.build.yaml@refs/heads/master | jq '.payload |= @base64d | .payload | fromjson'
 
       - name: Generate provenance
         id: gen-prov
@@ -346,7 +346,7 @@ jobs:
         if: github.event_name != 'pull_request'
         id: verf-prov
         run: |
-          cosign verify-attestation quay.io/tccr/${{ matrix.container }}@${{ steps.push.outputs.digest }} --type slsaprovenance --certificate-oidc-issuer=https://token.actions.githubusercontent.com --certificate-identity=https://github.com/truecharts/public/.github/workflows/containers.build.yaml@refs/heads/master | jq '.payload |= @base64d | .payload | fromjson'
+          cosign verify-attestation quay.io/tccr/${{ matrix.container }}@${{ steps.push.outputs.digest }} --type slsaprovenance --certificate-oidc-issuer=https://token.actions.githubusercontent.com --certificate-identity=https://github.com/trueforge-org/truecharts/.github/workflows/containers.build.yaml@refs/heads/master | jq '.payload |= @base64d | .payload | fromjson'
         env:
           COSIGN_EXPERIMENTAL: 1
 

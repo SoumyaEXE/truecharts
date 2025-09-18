@@ -1,7 +1,7 @@
 image:
   repository: ghcr.io/flaresolverr/flaresolverr
   pullPolicy: IfNotPresent
-  tag: v3.3.24@sha256:72e5a8bc63899ebeeb6bc0aece2b05a8d725c8a518aa30c610a8d61bb50303e1
+  tag: v3.4.1@sha256:5379a9209c86870558d77c8cdf7efdf300aecf0447617a05dc77e0491d53f34c
 securityContext:
   container:
     readOnlyRootFilesystem: false

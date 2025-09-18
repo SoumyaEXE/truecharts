@@ -12,8 +12,8 @@ apiVersion: v2
 appVersion: latest
 dependencies:
   - name: common
-    version: 25.4.10
-    repository: oci://tccr.io/truecharts
+    version: 28.18.0
+    repository: oci://oci.trueforge.org/truecharts
     condition: ""
     alias: ""
     tags: []
@@ -37,7 +37,8 @@ name: quickshare
 sources:
   - https://github.com/ihexxa/quickshare
   - https://github.com/truecharts/charts/tree/master/charts/stable/quickshare
+  - https://github.com/trueforge-org/truecharts/tree/master/charts/stable/quickshare
   - https://hub.docker.com/r/hexxa/quickshare
 type: application
-version: 7.5.3
+version: 8.5.0
 

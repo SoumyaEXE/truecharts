@@ -12,8 +12,8 @@ apiVersion: v2
 appVersion: 2021.12.01
 dependencies:
   - name: common
-    version: 25.4.10
-    repository: oci://tccr.io/truecharts
+    version: 28.18.0
+    repository: oci://oci.trueforge.org/truecharts
     condition: ""
     alias: ""
     tags: []
@@ -33,6 +33,7 @@ name: minisatip
 sources:
   - https://ghcr.io/linuxserver/minisatip
   - https://github.com/truecharts/charts/tree/master/charts/stable/minisatip
+  - https://github.com/trueforge-org/truecharts/tree/master/charts/stable/minisatip
 type: application
-version: 11.5.1
+version: 12.5.0
 

@@ -1,6 +1,6 @@
 image:
   repository: fyb3roptik/threadfin
-  tag: 1.2.34@sha256:7ca1302878e1f2661ab014fafacdeeefff6ef6f425db04c6ae033c381d5144b5
+  tag: 1.2.37@sha256:96122ab220e14b881cbd40d7f8c7b022e1f9c6ecfe05aca2ab801e0321dc0d61
   pullPolicy: IfNotPresent
 service:
   main:

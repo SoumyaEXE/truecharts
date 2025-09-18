@@ -1,6 +1,6 @@
 image:
   repository: ghcr.io/goofball222/unifi
-  tag: 9.1.120@sha256:bc00501e3c4c731ee5970c8bda0c0242d6276a898518513140f2978d92a39026
+  tag: 9.4.19@sha256:04d51ead2e0a4b77f335687463174967926e423a08940c375da5de2f8bce2477
   pullPolicy: IfNotPresent
 service:
   main:

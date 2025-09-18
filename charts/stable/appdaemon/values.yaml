@@ -1,7 +1,7 @@
 image:
   repository: docker.io/acockburn/appdaemon
   pullPolicy: IfNotPresent
-  tag: 4.5.8@sha256:9dc67ea2f47b14349d8792f263e7cf8b81753560302ddf3c6d907426ae7fa1a7
+  tag: 4.5.11@sha256:512c86e8cc24a3654e4cd2ddaf8a64ecd4e3707976a66b85bc2d9be51553be67
 securityContext:
   container:
     runAsNonRoot: false

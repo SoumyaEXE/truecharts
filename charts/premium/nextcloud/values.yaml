@@ -1,27 +1,27 @@
 image:
-  repository: tccr.io/tccr/nextcloud-fpm
+  repository: oci.trueforge.org/tccr/nextcloud-fpm
   pullPolicy: IfNotPresent
-  tag: v31.0.5@sha256:ba0ee2aa88f4204d7cdc7ead87a079d2722d2acdadac93db48e61128dc93bd2c
+  tag: v31.0.9@sha256:fdd8eab6a210837cae2f2e5fbb47fe0d161a9945d8847de78d867d84ad8bc922
 nginxImage:
   repository: docker.io/nginxinc/nginx-unprivileged
   pullPolicy: IfNotPresent
-  tag: 1.28.0@sha256:fe7beb9c152991f058e9312804d6e13acd7dc29a799632c4dcb868e1253644e5
+  tag: 1.29.1@sha256:3fbc5ad2c00a62a6c175e9a9a3b2de2b3011f3e5d005a091276620b34e1bae39
 imaginaryImage:
-  repository: tccr.io/tccr/nextcloud-imaginary
+  repository: oci.trueforge.org/tccr/nextcloud-imaginary
   pullPolicy: IfNotPresent
-  tag: v20230401@sha256:08a9c023e37e49e8f773b928ba1e2d6a3ac8c08ea3104005e180b771e1d8171b
+  tag: v20230401@sha256:5391f9f3488fbc7afd3102cf7f1f6d93224191f81356bc763b5f677b54bfa354
 hpbImage:
-  repository: tccr.io/tccr/nextcloud-push-notify
+  repository: oci.trueforge.org/tccr/nextcloud-push-notify
   pullPolicy: IfNotPresent
-  tag: v0.7.0@sha256:71fddbf75854ec16ae1876ec0992c7c38316f22a61a2eec7a71252520068a6a8
+  tag: v1.2.0@sha256:04099cc419dfa6d7e3971eac45cb1cb9628984342819f04553abd6abcb688334
 clamavImage:
   repository: docker.io/clamav/clamav
   pullPolicy: IfNotPresent
-  tag: 1.4.2@sha256:a3885eee90aa9bf601b1258d2b9ae1d778d8ed4266db3d5195bea34679b69f8c
+  tag: 1.4.3@sha256:5e8021f2ec524c01784fa2b19698fd29ed29cddd981c34a9dc44438bb511a2d8
 collaboraImage:
   repository: docker.io/collabora/code
   pullPolicy: IfNotPresent
-  tag: 25.04.2.2.1@sha256:6df19a481053674038514048a747b224f16fc48fd0daf3a104d29721390fe548
+  tag: 25.04.5.2.1@sha256:74031c1ecf6823dc9abd1a97142fef01797bdd7dc93aef0b8b09145ed2273cc3
 
 nextcloud:
   # Initial Credentials
@@ -529,14 +529,13 @@ cnpg:
     database: nextcloud
 redis:
   enabled: true
-  includeCommon: true
   username: default
 
 ingressMiddlewares:
   traefik:
     nextcloud-redirect:
       enabled: false
-      type: redirectRegex
+      type: redirect-regex
       data:
         regex: "https://(.*)/.well-known/(card|cal)dav"
         replacement: "https://${1}/remote.php/dav/"

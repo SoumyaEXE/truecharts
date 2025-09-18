@@ -1,6 +1,6 @@
 image:
   repository: docker.io/nocodb/nocodb
-  tag: 0.263.4@sha256:8b8177622c1a797ed18252e908376a7222580ea2c117b8bd47f46fecb8b33eff
+  tag: 0.264.8@sha256:6691bcbd5b87aa88d22e5842f9e94c3360427f76200484606f79a0d8262e165b
   pullPolicy: IfNotPresent
 securityContext:
   container:
@@ -65,5 +65,4 @@ cnpg:
     database: nocodb
 redis:
   enabled: true
-  includeCommon: true
   redisUsername: default

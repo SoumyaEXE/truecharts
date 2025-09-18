@@ -1,9 +1,8 @@
 image:
-  repository: public.ecr.aws/bitnami/memcached
+  repository: docker.io/bitnamisecure/memcached
   pullPolicy: IfNotPresent
-  tag: 1.6.38@sha256:4a1ccf9bc9548ec5ca64d30cef2f8c588c7c75489fb0aa8a80d89dc1fff40925
+  tag: latest@sha256:928b52a9a3afe56a0056fa0398f9765c140bcacea0723efb06a83daac9b813fc
 
-includeCommon: true
 service:
   main:
     ports:

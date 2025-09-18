@@ -12,8 +12,8 @@ apiVersion: v2
 appVersion: latest
 dependencies:
   - name: common
-    version: 25.4.10
-    repository: oci://tccr.io/truecharts
+    version: 28.18.0
+    repository: oci://oci.trueforge.org/truecharts
     condition: ""
     alias: ""
     tags: []
@@ -36,7 +36,8 @@ name: archivebox
 sources:
   - https://github.com/ArchiveBox/ArchiveBox
   - https://github.com/truecharts/charts/tree/master/charts/stable/archivebox
+  - https://github.com/trueforge-org/truecharts/tree/master/charts/stable/archivebox
   - https://hub.docker.com/r/archivebox/archivebox
 type: application
-version: 4.5.1
+version: 5.5.0
 

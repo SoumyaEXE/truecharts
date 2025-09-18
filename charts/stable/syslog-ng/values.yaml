@@ -1,7 +1,7 @@
 image:
   repository: docker.io/balabit/syslog-ng
   pullPolicy: IfNotPresent
-  tag: 4.8.3@sha256:c58d3d64b46c6c581bcbc3638bce1431e6eeed00fe8a00d384f9bbff228ecb27
+  tag: 4.9.0@sha256:c9bb4eaf85fd96db11ce7463bfcc381683f2cfe9f12be765fd77bfedfb4dfb05
 service:
   main:
     ports:

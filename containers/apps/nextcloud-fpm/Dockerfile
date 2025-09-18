@@ -1,5 +1,25 @@
-FROM public.ecr.aws/docker/library/nextcloud:31.0.5-fpm@sha256:1c04814ce2dbcf6123bd0dca2b52c356011ea61594d21768fe07659d0e97be5a
-# hadolint ignore=DL3008,DL3015,SC2086,SC2155,DL4006
+FROM public.ecr.aws/docker/library/nextcloud:31.0.9-fpm@sha256:dae4f63d2d43f2b5a3e6211636652374209f782e5ded8f04bad7d4be345e003b
+
+# Adds SURY PHP repository (This is a workaround because IMAP php extension is no longer available in Debian Trixie)
+# https://github.com/nextcloud/docker/issues/2456
+# https://www.voodoo.business/blog/2025/08/11/trixie-php8-4-imap-missing/
+# https://wiki.debian.org/AdditionalPHPVersions (Quotes "The SURY repository is a reputable repository by web hosting professionals worldwide, but IT'S NOT A OFFICIAL DEBIAN REPOSITORY. You have been warned.")
+RUN set -ex \
+  && apt-get update \
+  && apt-get install -y --no-install-recommends gnupg2 lsb-release \
+  && echo "deb https://packages.sury.org/php $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/sury-php.list \
+  && curl -fsSL https://packages.sury.org/php/apt.gpg | gpg --dearmor -o /etc/apt/trusted.gpg.d/sury-php.gpg \
+  \
+  && apt-get update \
+  # Development files for c-client mail API (used by IMAP)
+  && apt-get install -y --no-install-recommends libc-client-dev \
+  && apt-get dist-clean \
+  \
+  # Block the repository completely for future use
+  && echo "Package: *" > /etc/apt/preferences.d/99-pin-sury \
+  && echo "Pin: origin packages.sury.org" >> /etc/apt/preferences.d/99-pin-sury \
+  && echo "Pin-Priority: -1" >> /etc/apt/preferences.d/99-pin-sury
+
 RUN set -ex; \
     \
     echo "deb http://ftp.debian.org/debian $(cat /etc/os-release | grep VERSION_CODENAME | cut -d= -f2) non-free" >> \
@@ -11,12 +31,12 @@ RUN set -ex; \
         procps \
         ffmpeg \
         libheif1 \
+        ocrmypdf \
         smbclient \
         libde265-0 \
         libfcgi-bin \
         heif-gdk-pixbuf \
         imagemagick-common \
-        libmagickcore-6.q16-6-extra \
         intel-media-va-driver-non-free \
     ; \
     savedAptMark="$(apt-mark showmanual)"; \
@@ -25,7 +45,6 @@ RUN set -ex; \
     apt-get install -y --no-install-recommends \
         libbz2-dev \
         libkrb5-dev \
-        libc-client-dev \
         libsmbclient-dev \
         libmagickcore-dev \
     ; \
@@ -34,6 +53,7 @@ RUN set -ex; \
     docker-php-ext-install \
         bz2 \
         imap \
+        soap \
     ; \
     pecl install smbclient; \
     docker-php-ext-enable smbclient; \

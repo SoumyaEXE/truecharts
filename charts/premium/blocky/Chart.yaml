@@ -12,15 +12,15 @@ apiVersion: v2
 appVersion: 0.26.0
 dependencies:
   - name: common
-    version: 25.4.10
-    repository: oci://tccr.io/truecharts
+    version: 28.18.0
+    repository: oci://oci.trueforge.org/truecharts
     condition: ""
     alias: ""
     tags: []
     import-values: []
   - name: redis
-    version: 16.0.5
-    repository: oci://tccr.io/truecharts
+    version: 17.7.0
+    repository: oci://oci.trueforge.org/truecharts
     condition: redis.enabled
     alias: ""
     tags: []
@@ -43,8 +43,9 @@ sources:
   - https://github.com/0xERR0R/blocky
   - https://github.com/Mozart409/blocky-frontend
   - https://github.com/truecharts/charts/tree/master/charts/premium/blocky
+  - https://github.com/trueforge-org/truecharts/tree/master/charts/premium/blocky
   - https://hub.docker.com/r/spx01/blocky
   - https://quay.io/oriedge/k8s_gateway
 type: application
-version: 17.1.1
+version: 18.12.0
 

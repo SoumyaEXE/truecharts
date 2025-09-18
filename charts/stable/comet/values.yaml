@@ -1,7 +1,7 @@
 image:
-  repository: ghcr.io/elfhosted/comet
+  repository: ghcr.io/g0ldyy/comet
   pullPolicy: IfNotPresent
-  tag: v2.5.0@sha256:a02574a5522211a61d81b38cd48887b3f4c4bb697a6329931b682b3765d1d51a
+  tag: latest@sha256:36f379749e0424417e7d18922c0628e7bc0eae0639360249942104cf2e156552
 
 service:
   main:
@@ -20,7 +20,6 @@ workload:
             ADDON_ID: comet.selfhosted.org
             ADDON_NAME: Comet | Selfhosted
             ZILEAN_URL: None
-            ZILEAN_TAKE_FIRST: 500
             INDEXER_MANAGER_TYPE: None
             INDEXER_MANAGER_TIMEOUT: "30"
             # INDEXER_MANAGER_URL: http://jackett:9117
